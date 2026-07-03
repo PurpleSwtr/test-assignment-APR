@@ -25,3 +25,7 @@ __pycache__/
 Thumbs.db
 docker-compose*.yml
 README.md
+TODO.md
+tests/
+posts.csv
+*.log
