@@ -143,7 +143,7 @@ curl "http://localhost:8000/api/v1/posts/search?query=привет"
 curl -X DELETE "http://localhost:8000/api/v1/posts/delete_post/1"
 ```
 
-## 📄 Документация API
+## Документация API
 
 OpenAPI-схема генерируется перед запуском (локально), и сохраняется как [`docs.json`](docs.json) в корне репозитория.
 
