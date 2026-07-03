@@ -11,7 +11,7 @@
           "Posts"
         ],
         "summary": "Search",
-        "description": "Поиск документов по текстовому запросу.\nвозвращает первые 20 документов из PostgreSQL, упорядоченных по дате создания.\n\nArgs:\n    query (str): Текстовый запрос для поиска.\n    db (AsyncSession, optional): Асинхронная сессия базы данных.\n        Автоматически внедряется через Depends(get_db).\n\nReturns:\n    list[dict]: Список из максимум 20 документов со всеми полями БД\n        (id, rubrics, text, created_date), отсортированных по created_date\n        в порядке убывания.",
+        "description": "Поиск документов по текстовому запросу.\nвозвращает первые 20 документов из PostgreSQL, упорядоченных по дате создания.\n\nArgs:\n    query: Текстовый запрос для поиска.\n    db: Асинхронная сессия PostgreSQL.\n    es: Асинхронный клиент Elasticsearch.\n\nReturns:\n    Список из максимум 20 документов со всеми полями БД\n    (id, rubrics, text, created_date).",
         "operationId": "search_posts_search_get",
         "parameters": [
           {

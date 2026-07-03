@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     APP_PORT: int = Field(default=8000)
     DEBUG: bool = Field(default=False)
 
+    ES_INDEX = "posts"
+
     @property
     def DATABASE_URL(self) -> str:
         return f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
