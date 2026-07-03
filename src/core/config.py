@@ -5,13 +5,15 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     POSTGRES_USER: str = Field(default="postgres")
     POSTGRES_PASSWORD: str = Field(default="password")
-    POSTGRES_DB: str = Field(default="posts_db")
+    POSTGRES_DB: str = Field(default="db")
     POSTGRES_HOST: str = Field(default="localhost")
     POSTGRES_PORT: int = Field(default=5432)
 
     ELASTICSEARCH_HOST: str = Field(default="localhost")
     ELASTICSEARCH_PORT: int = Field(default=9200)
 
+    APP_HOST: str = Field(default="0.0.0.0")
+    APP_PORT: int = Field(default=8000)
     DEBUG: bool = Field(default=False)
 
     @property

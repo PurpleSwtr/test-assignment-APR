@@ -15,16 +15,15 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    openapi_schema = app.openapi()
-    with open("docs.json", "w") as f:
-        json.dump(openapi_schema, f, indent=2)
-
     await engine.dispose()
 
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(posts_router)
 
+openapi_schema = app.openapi()
+with open("docs.json", "w", encoding="utf-8") as f:
+    json.dump(openapi_schema, f, indent=2, ensure_ascii=False)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
