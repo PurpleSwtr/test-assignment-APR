@@ -61,18 +61,22 @@ docker compose exec app python src/import_data.py
 
 Сервис доступен:
 
-- **API**: http://localhost:8000
 - **Swagger UI**: http://localhost:8000/docs
+- **API**: http://localhost:8000/api/v1/
 - **OpenAPI схема**: http://localhost:8000/openapi.json
 
 Проверить эндпоинты через терминал:
 
 ```bash
 # Поиск
-curl "http://localhost:8000/posts/search?query=привет"
+curl -X 'GET' \
+  'http://localhost:8000/api/v1/posts/search?query=%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82' \
+  -H 'accept: application/json'
 
 # Удаление
-curl -X DELETE "http://localhost:8000/posts/delete_post/1"
+curl -X 'DELETE' \
+  'http://localhost:8000/api/v1/posts/delete_post/1' \
+  -H 'accept: application/json'
 ```
 
 Остановить:
