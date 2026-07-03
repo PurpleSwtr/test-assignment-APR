@@ -18,6 +18,7 @@ FROM python:3.12-slim-bookworm AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
+    PYTHONPATH="/app/src" \
     PATH="/app/.venv/bin:$PATH"
 
 RUN groupadd -g 1000 appuser && \
