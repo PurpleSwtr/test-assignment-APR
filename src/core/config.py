@@ -1,8 +1,12 @@
 from pydantic import Field
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env", env_file_encoding="utf-8", extra="ignore"
+    )
+
     POSTGRES_USER: str = Field(default="postgres")
     POSTGRES_PASSWORD: str = Field(default="password")
     POSTGRES_DB: str = Field(default="db")
@@ -16,7 +20,7 @@ class Settings(BaseSettings):
     APP_PORT: int = Field(default=8000)
     DEBUG: bool = Field(default=False)
 
-    ES_INDEX = "posts"
+    ES_INDEX: str = "posts"
 
     @property
     def DATABASE_URL(self) -> str:
@@ -25,10 +29,6 @@ class Settings(BaseSettings):
     @property
     def ELASTICSEARCH_URL(self) -> str:
         return f"http://{self.ELASTICSEARCH_HOST}:{self.ELASTICSEARCH_PORT}"
-
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
 
 
 settings = Settings()

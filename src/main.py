@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(title="test-assignment-APR", root_path="/api/v1", lifespan=lifespan)
 app.include_router(posts_router)
 
 openapi_schema = app.openapi()

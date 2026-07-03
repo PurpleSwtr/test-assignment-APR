@@ -9,7 +9,7 @@ from elasticsearch import AsyncElasticsearch
 from elasticsearch.helpers import async_bulk
 
 from core.config import settings
-from core.database import AsyncSessionLocal, Base, engine
+from core.database import AsyncSession, Base, engine
 from core.logger import logger
 from models.post import Post
 from parser import get_csv_data
@@ -63,7 +63,7 @@ async def create_index(es: AsyncElasticsearch) -> None:
 
 async def import_to_postgres(data: list[dict]) -> list[PostData]:
     """Импортирует данные в PostgreSQL и возвращает список PostData."""
-    async with AsyncSessionLocal() as session:
+    async with AsyncSession() as session:
         posts_data = []
         for idx, row in enumerate(data, start=1):
             post_data = PostData(

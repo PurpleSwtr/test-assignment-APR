@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "FastAPI",
+    "title": "test-assignment-APR",
     "version": "0.1.0"
   },
   "paths": {
@@ -59,7 +59,7 @@
           "Posts"
         ],
         "summary": "Delete Post",
-        "description": "Удаление поста по его ID.\nУдаляет запись как из базы данных PostgreSQL, так и из индекса Elasticsearch.\n\nArgs:\n    post_id (int): Уникальный идентификатор поста для удаления.\n    db (AsyncSession, optional): Асинхронная сессия базы данных.\n        Автоматически внедряется через Depends(get_db).\n\nReturns:\n    dict: Словарь с результатом операции:\n        {\"status\": \"success\"}\n\nRaises:\n    HTTPException: Если документ с указанным ID не найден (404).",
+        "description": "Удаление поста по его ID.\nУдаляет запись как из базы данных PostgreSQL, так и из индекса Elasticsearch.\n\nArgs:\n    post_id: Уникальный идентификатор поста.\n    db: Асинхронная сессия PostgreSQL.\n    es: Асинхронный клиент Elasticsearch.\n\nReturns:\n    {\"status\": \"success\"} при успешном удалении.\n\nRaises:\n    HTTPException(404): Если документ с указанным ID не найден.",
         "operationId": "delete_post_posts_delete_post__post_id__delete",
         "parameters": [
           {
